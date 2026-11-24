@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Profee — план до конца 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --violet:#543FE6; --violet-2:#7665EA; --violet-3:#8385F2; --violet-4:#B3B3EB;
+  --lav:#E4E4F0; --lav-2:#F1F1F8; --navy:#131341; --muted:#5D5D85;
+  --yellow:#FFDD7E; --green:#00B679; --coral:#F26D6D; --white:#fff;
+  --r:22px;
+  font-family:Montserrat,"Helvetica Neue",Arial,system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+body{margin:0;background:var(--lav);color:var(--navy);-webkit-font-smoothing:antialiased}
+.slide{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;
+  padding:clamp(72px,9vh,96px) clamp(16px,4vw,64px) clamp(56px,8vh,80px);position:relative}
+.wrap{width:100%;max-width:1240px;margin:0 auto}
+.violet{background:var(--violet);color:#fff}
+.violet .muted{color:#D6D3FB}
+.muted{color:var(--muted)}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+h1{font-size:clamp(40px,6.2vw,84px)}
+h2{font-size:clamp(28px,3.6vw,50px)}
+h3{font-size:clamp(17px,1.5vw,21px);letter-spacing:-.01em;line-height:1.2}
+p{margin:0;line-height:1.5}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+.violet .kicker{color:var(--yellow)}
+.lead{font-size:clamp(16px,1.4vw,19px);line-height:1.5;max-width:780px;margin-top:16px}
+.grid{display:grid;gap:16px}
+.card{background:#fff;border-radius:var(--r);padding:clamp(18px,2vw,26px)}
+.card.v{background:var(--violet-2);color:#fff}
+.card.y{background:var(--yellow);color:var(--navy)}
+.card.ghost{background:var(--lav-2)}
+.big{font-size:clamp(34px,4.2vw,60px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.mid{font-size:clamp(24px,2.4vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.05}
+.lbl{font-size:14px;font-weight:500;margin-bottom:8px}
+.small{font-size:13px;line-height:1.45}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--lav);color:var(--violet)}
+.tag.g{background:#D6F5EA;color:#007A52}.tag.y{background:var(--yellow);color:var(--navy)}
+.ph{display:inline-block;border:2px dashed #E0B640;background:#FFF6D9;color:#8A6400;border-radius:10px;padding:2px 10px;font-weight:700;white-space:nowrap}
+ul.clean{list-style:none;margin:12px 0 0;padding:0}
+ul.clean li{padding-left:22px;position:relative;margin:8px 0;line-height:1.45;font-size:15px}
+ul.clean li:before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:3px;background:var(--violet-3)}
+.violet ul.clean li:before{background:var(--yellow)}
+.src{font-size:12px;color:var(--muted);margin-top:18px}
+.violet .src{color:#C9C4FA}
+
+/* top bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(14px + env(safe-area-inset-top,0px)) clamp(16px,4vw,64px) 14px;pointer-events:none;transition:color .3s}
+.bar>*{pointer-events:auto}
+.logo{display:flex;align-items:center;gap:10px;font-size:26px;font-weight:300;letter-spacing:-.01em;text-decoration:none;color:inherit}
+.bar.on-violet{color:#fff}.bar.on-lav{color:var(--navy)}
+.dots{display:flex;gap:8px}
+.dots button{width:10px;height:10px;border-radius:999px;border:0;padding:0;background:currentColor;opacity:.28;cursor:pointer;transition:all .25s}
+.dots button.on{opacity:1;width:28px}
+.nav{position:fixed;right:clamp(16px,3vw,40px);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;gap:8px;align-items:center}
+.nav button{width:44px;height:44px;border-radius:14px;border:0;background:#fff;color:var(--violet);font-size:20px;cursor:pointer;box-shadow:0 6px 20px rgba(19,19,65,.15)}
+.nav button:hover{background:var(--yellow)}
+.nav .count{font-size:13px;font-weight:600;background:#fff;color:var(--navy);border-radius:12px;padding:8px 12px;box-shadow:0 6px 20px rgba(19,19,65,.15)}
+
+/* slide 1 */
+.goals{grid-template-columns:repeat(3,1fr);margin-top:44px}
+.goal{border-radius:var(--r);padding:24px;background:rgba(255,255,255,.12);position:relative;min-height:200px;display:flex;flex-direction:column;gap:10px}
+.goal .yr{font-size:14px;font-weight:600;color:var(--yellow)}
+.goal.main{background:#fff;color:var(--navy)}
+.goal.main .yr{color:var(--violet)}
+.goal p{font-size:15px}
+.goal .step{position:absolute;right:20px;top:18px;font-size:44px;font-weight:800;opacity:.18}
+.hero-kpis{grid-template-columns:repeat(3,1fr);margin-top:16px}
+.hero-kpis .k{background:rgba(255,255,255,.12);border-radius:var(--r);padding:18px 22px}
+.hero-kpis .k b{display:block;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em}
+
+/* slide 2 */
+.streams{grid-template-columns:1.25fr 1fr 1fr;margin-top:32px}
+.stream{display:flex;flex-direction:column;gap:10px}.stream .tag{align-self:flex-start}
+.stream .num{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.chartcard{margin-top:16px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.legend button{display:flex;align-items:center;gap:8px;font:500 13px Montserrat,system-ui,sans-serif;border:1px solid #D4D4E8;background:#fff;color:var(--navy);
+  border-radius:999px;padding:6px 12px;cursor:pointer}
+.legend button i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.legend button.off{opacity:.4;text-decoration:line-through}
+.seg{display:inline-flex;background:var(--lav);border-radius:12px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;font:600 13px Montserrat,system-ui,sans-serif;color:var(--muted);padding:8px 12px;border-radius:9px;cursor:pointer}
+.seg button.on{background:#fff;color:var(--violet);box-shadow:0 2px 8px rgba(19,19,65,.08)}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart text{font-family:Montserrat,system-ui,sans-serif}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--navy);color:#fff;font-size:13px;line-height:1.45;padding:10px 12px;border-radius:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:260px;opacity:0;transition:opacity .12s}
+.tip b{font-weight:700}
+.tip .row{display:flex;justify-content:space-between;gap:14px}
+
+/* slide 3 */
+.team{grid-template-columns:1fr 1.25fr;margin-top:32px;align-items:stretch}
+.hc{display:flex;align-items:flex-end;gap:18px;margin-top:18px;height:220px}
+.hc .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px}
+.hc .b{width:100%;border-radius:14px 14px 6px 6px;background:var(--violet);transition:height .9s cubic-bezier(.2,.8,.2,1);display:flex;align-items:flex-start;justify-content:center;color:#fff;font-weight:700;font-size:22px;padding-top:10px}
+.hc .b.mid2{background:var(--violet-3)}
+.hc .b.next{background:repeating-linear-gradient(135deg,#D9D6FB 0 8px,#ECEBFD 8px 16px);color:var(--violet);border:2px dashed var(--violet-3)}
+.hc .cap{font-size:13px;font-weight:600;text-align:center}
+.ai-steps{grid-template-columns:repeat(3,1fr);margin-top:16px}
+.ai-steps .card{display:flex;flex-direction:column;gap:8px}
+.ai-steps .n{font-size:13px;font-weight:700;color:var(--violet)}
+
+/* slide 4 */
+.fin{grid-template-columns:1.6fr 1fr;margin-top:28px;align-items:start}
+table.pl{width:100%;border-collapse:collapse;font-size:14px}
+table.pl th,table.pl td{padding:9px 6px;text-align:right;white-space:nowrap}
+table.pl th:first-child,table.pl td:first-child{text-align:left;white-space:normal}
+table.pl thead th{font-size:12px;color:var(--muted);font-weight:600;border-bottom:1px solid #E2E2EE}
+table.pl tbody tr+tr td{border-top:1px solid #F0F0F6}
+table.pl tr.tot td{font-weight:700}
+table.pl td.neg{color:var(--coral)} table.pl td.pos{color:var(--green)}
+table.pl th.hl,table.pl td.hl{background:var(--lav-2)}
+.tbl{overflow-x:auto}
+.mini{grid-template-columns:1fr 1fr;margin-top:16px}
+
+/* slide 5 */
+.ans{grid-template-columns:1fr 1fr;margin-top:30px;align-items:stretch}
+.ans .card{display:flex;flex-direction:column;gap:12px}
+.uof{display:grid;gap:10px;margin-top:6px}
+.uof .r{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-size:15px;padding:10px 0;border-top:1px solid rgba(255,255,255,.2)}
+.yes{font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--yellow);color:var(--navy);align-self:flex-start}
+
+/* slide 6 */
+.close{grid-template-columns:1.1fr 1fr;margin-top:30px;align-items:start}
+.pipe{display:grid;gap:10px;margin-top:12px}
+.pipe .p{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.12);border-radius:16px;padding:14px 18px}
+.pipe .p b{font-size:18px}
+.road{position:relative;display:grid;gap:14px;margin-top:12px;padding-left:28px}
+.road:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:rgba(255,255,255,.3)}
+.road .s{position:relative}
+.road .s:before{content:"";position:absolute;left:-26px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px rgba(255,221,126,.25)}
+.road .s .t{font-size:13px;font-weight:700;color:var(--yellow)}
+.road .s p{font-size:15px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.in .reveal{opacity:1;transform:none}
+.in .reveal.d1{transition-delay:.08s}.in .reveal.d2{transition-delay:.16s}.in .reveal.d3{transition-delay:.24s}.in .reveal.d4{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:980px){
+  html{scroll-snap-type:none}
+  .goals,.hero-kpis,.streams,.team,.fin,.ans,.close,.ai-steps{grid-template-columns:1fr}
+  .slide{min-height:auto}
+  .slide:first-of-type{min-height:100svh}
+  .dots{display:none}
+  .hc{height:180px}
+}
+@media (max-width:560px){ .mini{grid-template-columns:1fr} .nav .count{display:none} }
+</style>
+</head>
+<body>
+
+<header class="bar on-violet" id="bar">
+  <a class="logo" href="#s1" aria-label="Profee">
+    <svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true">
+      <path d="M4 22 L14 8 Q16 5 18 8 L28 22 Q30 26 26 26 L6 26 Q2 26 4 22Z" fill="#B3B3EB"/>
+      <path d="M14 22 L24 6 Q26 3 28 6 L38 22 Q40 26 36 26 L16 26 Q12 26 14 22Z" fill="#8385F2"/>
+    </svg>profee</a>
+  <nav class="dots" id="dots" aria-label="Слайды"></nav>
+</header>
+
+<!-- 1 -->
+<section class="slide violet" id="s1" data-theme="violet">
+  <div class="wrap">
+    <div class="kicker reveal">Investor update · ноябрь 2026</div>
+    <h1 class="reveal d1">План Profee<br>до конца 2027 года</h1>
+    <p class="lead reveal d2" style="color:#E4E2FD">Мы перестроили бизнес: убыток сокращается в 20 раз, новые доходные потоки дают 38% выручки 2027 года, а команда работает в AI-native модели. Ниже — как мы выходим в операционную прибыль и для чего привлекаем €15 млн.</p>
+
+    <div class="grid goals">
+      <div class="goal reveal d1"><span class="step">01</span><div class="yr">2025–2026 · сделано</div><h3>Перезапуск модели</h3><p>Команда 204 → 100 человек, ФОТ −42%, запуск Money Making Mode: сертификаты, платёжная инфраструктура, техно-сервисы.</p></div>
+      <div class="goal main reveal d2"><span class="step">02</span><div class="yr">Цель 2027</div><h3>Операционная прибыль</h3><p>Операционный плюс с июля 2027, чистая прибыль — с сентября 2027. Валовая прибыль 2027: €6,7 млн (+83% г/г).</p></div>
+      <div class="goal reveal d3"><span class="step">03</span><div class="yr">Ultimate goal · 2027+</div><h3>Полный возврат инвестиций</h3><p>Привлечение стороннего инвестора и продажа доли бизнеса Profee — возврат вложенного капитала акционерам.</p></div>
+    </div>
+
+    <div class="grid hero-kpis">
+      <div class="k reveal d2"><span class="small">Чистый убыток 2025</span><b>−€8,0 млн</b></div>
+      <div class="k reveal d3"><span class="small">Чистый убыток 2026E</span><b>−€5,2 млн</b></div>
+      <div class="k reveal d4" style="background:var(--yellow);color:var(--navy)"><span class="small">Чистый результат 2027P</span><b>−€0,4 млн → в плюс с IX.2027</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="s2" data-theme="lav">
+  <div class="wrap">
+    <div class="kicker reveal">Стрим 1 · Money Making Mode</div>
+    <h2 class="reveal d1">Доходные проекты, которые выводят нас в плюс</h2>
+
+    <div class="grid streams">
+      <div class="card y stream reveal d1">
+        <span class="tag" style="background:#fff">Работает с IX.2026</span>
+        <h3>Сертификаты Apple RU</h3>
+        <div class="num"><span class="big">€178K+</span><span>в месяц</span></div>
+        <p class="small">€1,97 млн дохода в 2027 по финплану. Следующий шаг — <b>широкий каталог</b>: подписки, игры, AI-сервисы и др. для банков РФ и крупных корпоративных клиентов.</p>
+        <p class="small">Прогноз по расширенному каталогу: <span class="ph">€ [__] млн / год</span></p>
+      </div>
+      <div class="card stream reveal d2">
+        <span class="tag">Пайплайн</span>
+        <h3>Перепродажа платёжной инфраструктуры</h3>
+        <p class="small">Каналы в Узбекистан и другие страны СНГ для партнёров. Клиенты в пайпе: <b>Сбер, ТБанк, Inwizo</b>.</p>
+        <div class="num"><span class="mid">€19 млн</span><span class="small">оборот / мес к XII.2027</span></div>
+        <p class="small muted">Доход 2027 по финплану: €0,32 млн (маржа 0,25%). Апсайд от подписания пайплайна: <span class="ph">€ [__] млн</span></p>
+      </div>
+      <div class="card stream reveal d3">
+        <span class="tag g">Стабильный доход</span>
+        <h3>Технологические сервисы</h3>
+        <p class="small">Продажа технологий и процессинга Profee партнёрам (ECMP, S_Co).</p>
+        <div class="num"><span class="mid">€2,1 млн</span><span class="small">доход 2027</span></div>
+        <p class="small muted">≈ €175K в месяц, рост в 1,6× к 2026</p>
+      </div>
+    </div>
+
+    <div class="card chartcard reveal d2">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+        <div><h3>Структура выручки, € млн</h3><p class="small muted" style="margin-top:4px">Нажмите на поток в легенде, чтобы скрыть/показать его</p></div>
+        <div class="seg" id="revMode"><button class="on" data-m="y">По годам</button><button data-m="m">По месяцам</button></div>
+      </div>
+      <div class="legend" id="revLegend"></div>
+      <svg class="chart" id="revChart" viewBox="0 0 1000 260" role="img" aria-label="Структура выручки"></svg>
+    </div>
+    <p class="src">Источник: финплан Profee 2026–27 (EUR). 2026E — факт + прогноз на ноябрь–декабрь.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="s3" data-theme="lav" style="background:var(--lav-2)">
+  <div class="wrap">
+    <div class="kicker reveal">Стрим 2 · Оптимизация команды</div>
+    <h2 class="reveal d1">AI — экзоскелет для каждого сотрудника</h2>
+    <p class="lead reveal d2">Автоматизация процессов во всех департаментах и AI в ежедневной работе позволяют делать кратно больше тем же ресурсом. Следующий шаг — AI-native бизнес, где часть функций выполняют AI-агенты.</p>
+
+    <div class="grid team">
+      <div class="card reveal d1">
+        <h3>Численность команды</h3>
+        <div class="hc" id="hc">
+          <div class="col"><div class="b" data-h="100">204</div><div class="cap">2025</div></div>
+          <div class="col"><div class="b mid2" data-h="49">100</div><div class="cap">Ноябрь 2026</div></div>
+          <div class="col"><div class="b next" data-h="30"><span class="ph" style="font-size:14px;border:0;background:transparent">[__]</span></div><div class="cap">AI-native, 2027+</div></div>
+        </div>
+        <p class="small muted" style="margin-top:12px">−51% штата без потери операционных возможностей</p>
+      </div>
+      <div class="card reveal d2">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <h3>Затраты на персонал в месяц, € тыс.</h3>
+          <span class="tag g">ФОТ 2027 vs 2025: −42%</span>
+        </div>
+        <svg class="chart" id="hrChart" viewBox="0 0 640 250" role="img" aria-label="Затраты на персонал по месяцам"></svg>
+        <div class="grid mini">
+          <div class="card ghost"><div class="lbl">ФОТ 2025</div><div class="mid">€8,3 млн</div></div>
+          <div class="card ghost"><div class="lbl">ФОТ 2027P</div><div class="mid" style="color:var(--violet)">€4,8 млн</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid ai-steps">
+      <div class="card reveal d1"><div class="n">Сделано</div><h3>Автоматизация процессов</h3><p class="small">Ручные операции в поддержке, комплаенсе, финансах и разработке переведены на автоматизацию.</p></div>
+      <div class="card reveal d2"><div class="n">Сейчас</div><h3>AI в ежедневной работе</h3><p class="small">Каждый сотрудник работает с AI-инструментами: кратный рост производительности на человека.</p></div>
+      <div class="card v reveal d3"><div class="n" style="color:var(--yellow)">Далее</div><h3>AI-native компания</h3><p class="small">Замещение операционных ролей AI-агентами; совокупные операционные расходы 2027 — €6,9 млн vs €12,3 млн в 2025.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="s4" data-theme="lav">
+  <div class="wrap">
+    <div class="kicker reveal">Финплан 2025–2027</div>
+    <h2 class="reveal d1">Выход в операционную прибыль в июле 2027</h2>
+
+    <div class="grid fin">
+      <div class="card reveal d1">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <h3 id="finTitle">Чистая прибыль / убыток по месяцам, € тыс.</h3>
+          <div class="seg" id="finMode">
+            <button class="on" data-m="net">Чистая</button><button data-m="op">Операционная</button><button data-m="rev">Выручка</button>
+          </div>
+        </div>
+        <svg class="chart" id="finChart" viewBox="0 0 760 300" role="img" aria-label="Финансовый результат по месяцам"></svg>
+      </div>
+      <div class="card reveal d2">
+        <h3>P&amp;L, € млн</h3>
+        <div class="tbl"><table class="pl" id="plTable"></table></div>
+      </div>
+    </div>
+
+    <div class="grid mini reveal d3" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div class="card y"><div class="lbl">Заработаем, XI.2026 – XII.2027</div><div class="mid">€13,5 млн выручки</div><p class="small" style="margin-top:6px">€7,8 млн валовой прибыли</p></div>
+      <div class="card"><div class="lbl">Потратим на OPEX за тот же период</div><div class="mid">€8,1 млн</div><p class="small muted" style="margin-top:6px">персонал €5,6 млн · маркетинг €1,1 млн · IT и G&amp;A €1,3 млн</p></div>
+      <div class="card v"><div class="lbl">Итог периода после налогов</div><div class="mid">−€0,54 млн</div><p class="small" style="margin-top:6px">с IX.2027 каждый месяц — в плюс</p></div>
+    </div>
+    <p class="src">Операционная прибыль = валовая прибыль − маркетинг − персонал − IT и G&amp;A (до налогов). 2026E — факт + прогноз; 2027P — план.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="slide" id="s5" data-theme="lav" style="background:var(--lav-2)">
+  <div class="wrap">
+    <div class="kicker reveal">Потребуются ли вложения?</div>
+    <h2 class="reveal d1">Да — два разных вопроса и два разных ответа</h2>
+
+    <div class="grid ans">
+      <div class="card reveal d1">
+        <span class="yes">Для выхода в прибыль</span>
+        <div class="big">≈ €0,6 млн</div>
+        <p>Столько нужно, чтобы покрыть оставшиеся убытки до точки безубыточности по текущему плану. Пик накопленного дефицита — <b>€584K в августе 2027</b>, далее бизнес самофинансируется.</p>
+        <svg class="chart" id="cumChart" viewBox="0 0 560 220" role="img" aria-label="Накопленный результат с ноября 2026"></svg>
+        <p class="small muted">Без учёта резерва на отклонения от плана. Рекомендуемый резерв: <span class="ph">€ [__] млн</span></p>
+      </div>
+      <div class="card v reveal d2" style="background:var(--violet)">
+        <span class="yes">Для роста · Ask</span>
+        <div class="big">€15 млн</div>
+        <p>Превращение Profee в <b>AI-native необанк</b> и выход на рынки <b>Middle East и USA</b> — на базе уже прибыльного ядра.</p>
+        <div class="uof">
+          <div class="r"><span>AI-native продукт: необанк, AI-агенты для клиентов и операций</span><span class="ph">[__]%</span></div>
+          <div class="r"><span>Выход на Middle East: лицензии, партнёры, запуск</span><span class="ph">[__]%</span></div>
+          <div class="r"><span>Выход на USA: лицензии, партнёры, запуск</span><span class="ph">[__]%</span></div>
+          <div class="r"><span>Маркетинг и привлечение клиентов на новых рынках</span><span class="ph">[__]%</span></div>
+          <div class="r"><span>Оборотный капитал и резерв</span><span class="ph">[__]%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide violet" id="s6" data-theme="violet">
+  <div class="wrap">
+    <div class="kicker reveal">Поиск инвестора и возврат инвестиций</div>
+    <h2 class="reveal d1">Привлекаем стратегического инвестора<br>в прибыльный бизнес</h2>
+
+    <div class="grid close">
+      <div class="reveal d1">
+        <h3>Инвесторы в работе</h3>
+        <div class="pipe">
+          <div class="p"><b>FundersVC</b><span class="tag y">Активный диалог</span></div>
+          <div class="p"><b>Inwizo</b><span class="tag y">Активный диалог</span></div>
+          <div class="p"><b>+2 инвестора</b><span class="tag" style="background:rgba(255,255,255,.18);color:#fff">В пайпе</span></div>
+        </div>
+        <div class="card y" style="margin-top:16px">
+          <div class="lbl">Ask</div>
+          <div class="big">€15 млн</div>
+          <p class="small" style="margin-top:8px">AI-native необанк · Middle East · USA</p>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3>Дорожная карта</h3>
+        <div class="road">
+          <div class="s"><div class="t">IV кв. 2026</div><p>Команда 100 человек, Apple RU €178K/мес, запуск продаж платёжной инфраструктуры (Сбер, ТБанк, Inwizo)</p></div>
+          <div class="s"><div class="t">I–II кв. 2027</div><p>Широкий каталог сертификатов для банков и корпоративных клиентов, рост Payment Rails, закрытие раунда</p></div>
+          <div class="s"><div class="t">Июль 2027</div><p>Операционная прибыль; с сентября — чистая прибыль</p></div>
+          <div class="s"><div class="t">2027+</div><p>AI-native необанк, запуск Middle East &amp; USA на средства раунда</p></div>
+          <div class="s"><div class="t">Ultimate goal</div><p>Полный возврат инвестиций акционерам за счёт сторонних инвесторов и продажи доли Profee</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="src">profee.com · Конфиденциально. Прогнозные показатели основаны на финплане Profee 2026–27 и могут меняться.</p>
+  </div>
+</section>
+
+<div class="nav"><span class="count" id="count">1 / 6</span><button id="prev" aria-label="Назад">↑</button><button id="next" aria-label="Вперёд">↓</button></div>
+<div class="tip" id="tip"></div>
+
+<script>
+const D = {"months": [{"d": "2025-01", "rev": {"mt": 1136.1, "tech": 0.0, "cert": 0.0, "rails": 0.0}, "tr": 1136.1, "gp": 42.3, "sm": -261.1, "hr": -583.4, "it": -109.9, "op": -912.1, "net": -912.2}, {"d": "2025-02", "rev": {"mt": 1135.6, "tech": 0.0, "cert": 0.0, "rails": 0.0}, "tr": 1135.6, "gp": 287.3, "sm": -262.2, "hr": -659.9, "it": -98.0, "op": -732.8, "net": -749.2}, {"d": "2025-03", "rev": {"mt": 1317.9, "tech": 0.0, "cert": 0.0, "rails": 0.0}, "tr": 1317.9, "gp": 462.5, "sm": -257.6, "hr": -664.3, "it": -111.3, "op": -570.7, "net": -570.8}, {"d": "2025-04", "rev": {"mt": 1470.5, "tech": 0.0, "cert": 0.0, "rails": 0.0}, "tr": 1470.5, "gp": 489.7, "sm": -257.1, "hr": -670.9, "it": -146.2, "op": -584.5, "net": -584.5}, {"d": "2025-05", "rev": {"mt": 1366.5, "tech": 0.0, "cert": 0.0, "rails": 0.0}, "tr": 1366.5, "gp": 464.7, "sm": -234.5, "hr": -676.7, "it": -118.2, "op": -564.8, "net": -611.4}, {"d": "2025-06", "rev": {"mt": 1379.5, "tech": 11.7, "cert": 0.0, "rails": 0.0}, "tr": 1391.2, "gp": 636.4, "sm": -283.9, "hr": -666.4, "it": -139.8, "op": -453.6, "net": -453.6}, {"d": "2025-07", "rev": {"mt": 1684.4, "tech": 80.0, "cert": 0.0, "rails": 0.0}, "tr": 1764.4, "gp": 682.9, "sm": -258.6, "hr": -581.9, "it": -115.7, "op": -273.4, "net": -273.4}, {"d": "2025-08", "rev": {"mt": 1143.9, "tech": 99.5, "cert": 0.0, "rails": 0.0}, "tr": 1243.5, "gp": 400.9, "sm": -215.3, "hr": -725.0, "it": -121.7, "op": -661.1, "net": -703.2}, {"d": "2025-09", "rev": {"mt": 1030.9, "tech": 48.1, "cert": 0.0, "rails": 0.0}, "tr": 1079.0, "gp": 444.2, "sm": -192.7, "hr": -725.7, "it": -117.6, "op": -591.7, "net": -591.7}, {"d": "2025-10", "rev": {"mt": 941.1, "tech": 44.1, "cert": 0.0, "rails": 0.0}, "tr": 985.2, "gp": 381.8, "sm": -185.9, "hr": -729.9, "it": -88.7, "op": -622.7, "net": -623.1}, {"d": "2025-11", "rev": {"mt": 531.1, "tech": 46.7, "cert": 0.0, "rails": 0.0}, "tr": 577.8, "gp": 86.8, "sm": -143.8, "hr": -866.7, "it": -104.9, "op": -1028.6, "net": -1071.4}, {"d": "2025-12", "rev": {"mt": 526.8, "tech": 40.5, "cert": 0.0, "rails": 0.0}, "tr": 567.4, "gp": 100.0, "sm": -106.4, "hr": -724.7, "it": -97.0, "op": -828.0, "net": -828.0}, {"d": "2026-01", "rev": {"mt": 487.8, "tech": 35.8, "cert": 0.0, "rails": 0.0}, "tr": 523.6, "gp": 161.7, "sm": -100.1, "hr": -533.0, "it": -88.6, "op": -559.9, "net": -574.5}, {"d": "2026-02", "rev": {"mt": 476.9, "tech": 40.5, "cert": 0.0, "rails": 0.0}, "tr": 517.4, "gp": 152.1, "sm": -98.8, "hr": -555.1, "it": -100.3, "op": -602.1, "net": -647.9}, {"d": "2026-03", "rev": {"mt": 515.2, "tech": 43.9, "cert": 0.0, "rails": 0.0}, "tr": 559.1, "gp": 170.6, "sm": -99.8, "hr": -534.8, "it": -92.9, "op": -556.9, "net": -556.9}, {"d": "2026-04", "rev": {"mt": 526.8, "tech": 42.2, "cert": 0.0, "rails": 0.0}, "tr": 569.0, "gp": 177.1, "sm": -101.7, "hr": -563.8, "it": -85.2, "op": -573.7, "net": -574.7}, {"d": "2026-05", "rev": {"mt": 514.3, "tech": 59.0, "cert": 0.0, "rails": 0.0}, "tr": 573.3, "gp": 187.8, "sm": -104.1, "hr": -563.2, "it": -99.4, "op": -578.9, "net": -578.9}, {"d": "2026-06", "rev": {"mt": 521.6, "tech": 48.6, "cert": 0.0, "rails": 0.0}, "tr": 570.2, "gp": 118.3, "sm": -106.6, "hr": -565.7, "it": -114.5, "op": -668.5, "net": -715.1}, {"d": "2026-07", "rev": {"mt": 573.8, "tech": 103.5, "cert": 0.0, "rails": 0.0}, "tr": 677.3, "gp": 225.6, "sm": -96.1, "hr": -508.2, "it": -103.2, "op": -481.8, "net": -481.8}, {"d": "2026-08", "rev": {"mt": 572.7, "tech": 214.9, "cert": 37.3, "rails": 0.0}, "tr": 825.0, "gp": 434.4, "sm": -108.4, "hr": -487.1, "it": -109.8, "op": -270.8, "net": -270.8}, {"d": "2026-09", "rev": {"mt": 554.6, "tech": 173.9, "cert": 178.8, "rails": 19.8}, "tr": 927.0, "gp": 462.4, "sm": -81.9, "hr": -497.7, "it": -107.0, "op": -224.2, "net": -306.3}, {"d": "2026-10", "rev": {"mt": 560.1, "tech": 175.5, "cert": 178.8, "rails": 0.0}, "tr": 914.4, "gp": 521.7, "sm": -80.0, "hr": -683.3, "it": -100.1, "op": -341.7, "net": -359.8}, {"d": "2026-11", "rev": {"mt": 565.7, "tech": 175.5, "cert": 178.8, "rails": 0.0}, "tr": 920.0, "gp": 530.4, "sm": -80.0, "hr": -425.0, "it": -95.1, "op": -69.7, "net": -87.7}, {"d": "2026-12", "rev": {"mt": 571.4, "tech": 175.5, "cert": 178.8, "rails": 2.5}, "tr": 928.2, "gp": 541.7, "sm": -80.0, "hr": -425.0, "it": -95.1, "op": -58.4, "net": -76.5}, {"d": "2027-01", "rev": {"mt": 461.7, "tech": 175.5, "cert": 150.0, "rails": 6.2}, "tr": 793.5, "gp": 481.1, "sm": -80.0, "hr": -419.0, "it": -95.1, "op": -112.9, "net": -131.0}, {"d": "2027-02", "rev": {"mt": 559.6, "tech": 175.5, "cert": 150.0, "rails": 10.0}, "tr": 895.1, "gp": 516.6, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": -56.3, "net": -74.3}, {"d": "2027-03", "rev": {"mt": 593.4, "tech": 175.5, "cert": 150.0, "rails": 13.8}, "tr": 932.7, "gp": 531.3, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": -41.6, "net": -59.6}, {"d": "2027-04", "rev": {"mt": 599.4, "tech": 175.5, "cert": 150.0, "rails": 17.5}, "tr": 942.4, "gp": 536.9, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": -35.9, "net": -54.0}, {"d": "2027-05", "rev": {"mt": 605.4, "tech": 175.5, "cert": 150.0, "rails": 21.2}, "tr": 952.1, "gp": 542.6, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": -30.2, "net": -48.3}, {"d": "2027-06", "rev": {"mt": 611.4, "tech": 175.5, "cert": 150.0, "rails": 25.0}, "tr": 961.9, "gp": 548.3, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": -24.5, "net": -42.6}, {"d": "2027-07", "rev": {"mt": 617.5, "tech": 175.5, "cert": 178.8, "rails": 28.8}, "tr": 1000.6, "gp": 582.8, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": 10.0, "net": -8.1}, {"d": "2027-08", "rev": {"mt": 623.7, "tech": 175.5, "cert": 178.8, "rails": 32.5}, "tr": 1010.5, "gp": 588.6, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": 15.7, "net": -2.3}, {"d": "2027-09", "rev": {"mt": 629.9, "tech": 175.5, "cert": 178.8, "rails": 36.2}, "tr": 1020.5, "gp": 594.3, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": 21.5, "net": 3.4}, {"d": "2027-10", "rev": {"mt": 636.2, "tech": 175.5, "cert": 178.8, "rails": 40.0}, "tr": 1030.5, "gp": 600.1, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": 27.3, "net": 9.2}, {"d": "2027-11", "rev": {"mt": 642.6, "tech": 175.5, "cert": 178.8, "rails": 43.8}, "tr": 1040.6, "gp": 605.9, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": 33.1, "net": 15.0}, {"d": "2027-12", "rev": {"mt": 649.0, "tech": 175.5, "cert": 178.8, "rails": 47.5}, "tr": 1050.8, "gp": 611.8, "sm": -80.0, "hr": -397.7, "it": -95.1, "op": 38.9, "net": 20.9}], "years": [{"y": "2025", "rev": {"mt": 13664.3, "tech": 370.6, "cert": 0.0, "rails": 0.0}, "rev_t": 14035.1, "gp": 4479.5, "sm": -2659.1, "hr": -8275.5, "it": -1369.0, "op": -7824.0, "net": -7972.5}, {"y": "2026E", "rev": {"mt": 6440.9, "tech": 1288.8, "cert": 752.5, "rails": 22.3}, "rev_t": 8504.5, "gp": 3683.8, "sm": -1137.5, "hr": -6341.9, "it": -1191.2, "op": -4986.6, "net": -5230.9}, {"y": "2027P", "rev": {"mt": 7229.8, "tech": 2106.0, "cert": 1972.8, "rails": 322.5}, "rev_t": 11631.2, "gp": 6740.3, "sm": -960.0, "hr": -4793.7, "it": -1141.2, "op": -154.9, "net": -371.7}], "cum": [{"d": "2026-11", "m": -87.7, "v": -87.7}, {"d": "2026-12", "m": -76.5, "v": -164.2}, {"d": "2027-01", "m": -131.0, "v": -295.2}, {"d": "2027-02", "m": -74.3, "v": -369.5}, {"d": "2027-03", "m": -59.6, "v": -429.1}, {"d": "2027-04", "m": -54.0, "v": -483.1}, {"d": "2027-05", "m": -48.3, "v": -531.4}, {"d": "2027-06", "m": -42.6, "v": -574.0}, {"d": "2027-07", "m": -8.1, "v": -582.1}, {"d": "2027-08", "m": -2.3, "v": -584.4}, {"d": "2027-09", "m": 3.4, "v": -581.0}, {"d": "2027-10", "m": 9.2, "v": -571.8}, {"d": "2027-11", "m": 15.0, "v": -556.8}, {"d": "2027-12", "m": 20.9, "v": -535.9}]};
+const NS='http://www.w3.org/2000/svg';
+const fmtK = v => (v<0?'−':'')+'€'+Math.abs(Math.round(v)).toLocaleString('ru-RU')+'K';
+const fmtM = v => (v<0?'−':'')+'€'+(Math.abs(v)/1000).toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1})+' млн';
+const MON=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+const mLabel = d => MON[+d.slice(5)-1]+' '+d.slice(2,4);
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e}
+const tip=document.getElementById('tip');
+function showTip(ev,html){tip.innerHTML=html;tip.style.opacity=1;const x=Math.min(ev.clientX+14,innerWidth-tip.offsetWidth-10);const y=Math.max(ev.clientY-tip.offsetHeight-14,10);tip.style.left=x+'px';tip.style.top=y+'px'}
+function hideTip(){tip.style.opacity=0}
+function niceTicks(min,max,n){const span=max-min||1;const step0=span/n;const p=Math.pow(10,Math.floor(Math.log10(step0)));const s=[1,2,2.5,5,10].map(m=>m*p).find(s=>span/s<=n)||p*10;const a=Math.floor(min/s)*s,b=Math.ceil(max/s)*s;const t=[];for(let v=a;v<=b+1e-9;v+=s)t.push(+v.toFixed(6));return t}
+
+/* ---------- revenue stacked ---------- */
+const STREAMS=[
+ {k:'mt',name:'Денежные переводы',c:'#B3B3EB'},
+ {k:'tech',name:'Техно-сервисы (ECMP, S_Co)',c:'#8385F2'},
+ {k:'cert',name:'Сертификаты Apple RU',c:'#FFCB45'},
+ {k:'rails',name:'Платёжная инфраструктура',c:'#00B679'},
+];
+const revOn=new Set(STREAMS.map(s=>s.k)); let revMode='y';
+const leg=document.getElementById('revLegend');
+STREAMS.forEach(s=>{const b=document.createElement('button');b.innerHTML=`<i style="background:${s.c}"></i>${s.name}`;b.onclick=()=>{revOn.has(s.k)?revOn.delete(s.k):revOn.add(s.k);b.classList.toggle('off');drawRev()};leg.appendChild(b)});
+document.querySelectorAll('#revMode button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#revMode button').forEach(x=>x.classList.remove('on'));b.classList.add('on');revMode=b.dataset.m;drawRev()});
+function drawRev(){
+  const svg=document.getElementById('revChart');svg.innerHTML='';
+  const W=1000,H=260,L=48,R=10,T=14,B=30;
+  let cats,vals;
+  if(revMode==='y'){cats=D.years.map(y=>y.y);vals=D.years.map(y=>y.rev)}
+  else{cats=D.months.map(m=>m.d);vals=D.months.map(m=>m.rev)}
+  const tot=vals.map(v=>STREAMS.reduce((a,s)=>a+(revOn.has(s.k)?v[s.k]:0),0));
+  const ticks=niceTicks(0,Math.max(...tot,1),4);const max=ticks[ticks.length-1];
+  const y=v=>T+(H-T-B)*(1-v/max);
+  ticks.forEach(t=>{el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:'#ECECF4'},svg);el('text',{x:L-8,y:y(t)+4,'text-anchor':'end','font-size':12,fill:'#5D5D85'},svg,revMode==='y'?(t/1000).toLocaleString('ru-RU'):(t/1000).toLocaleString('ru-RU',{maximumFractionDigits:1}))});
+  const n=cats.length,bw=(W-L-R)/n,w=revMode==='y'?Math.min(160,bw*.5):bw*.7;
+  cats.forEach((c,i)=>{
+    const x=L+bw*i+(bw-w)/2;let acc=0;const g=el('g',{},svg);
+    STREAMS.forEach(s=>{if(!revOn.has(s.k))return;const v=vals[i][s.k];if(v<=0)return;el('rect',{x,y:y(acc+v),width:w,height:Math.max(0,y(acc)-y(acc+v)),fill:s.c,rx:revMode==='y'?4:1},g);acc+=v});
+    if(revMode==='y'){el('text',{x:x+w/2,y:y(acc)-8,'text-anchor':'middle','font-size':15,'font-weight':700,fill:'#131341'},svg,fmtM(acc));
+      const share=(vals[i].cert+vals[i].rails+vals[i].tech)/STREAMS.reduce((a,s)=>a+vals[i][s.k],0);
+      el('text',{x:x+w+10,y:y(acc)+18,'font-size':12,fill:'#543FE6','font-weight':600},svg,'новые потоки '+Math.round(share*100)+'%')}
+    const lab=revMode==='y'?c:(c.slice(5)==='01'?c.slice(0,4):(c.slice(5)==='07'?'июл':''));
+    if(lab)el('text',{x:L+bw*i+bw/2,y:H-8,'text-anchor':'middle','font-size':12,fill:'#5D5D85','font-weight':revMode==='y'?600:400},svg,lab);
+    const hit=el('rect',{x:L+bw*i,y:T,width:bw,height:H-T-B,fill:'transparent'},svg);
+    hit.addEventListener('mousemove',ev=>{let h=`<b>${revMode==='y'?c:mLabel(c)}</b>`;STREAMS.forEach(s=>{if(revOn.has(s.k))h+=`<div class="row"><span>${s.name}</span><span>${fmtK(vals[i][s.k])}</span></div>`});h+=`<div class="row"><b>Итого</b><b>${fmtK(tot[i])}</b></div>`;showTip(ev,h)});
+    hit.addEventListener('mouseleave',hideTip);
+  });
+}
+drawRev();
+
+/* ---------- HR line ---------- */
+(function(){
+  const svg=document.getElementById('hrChart');const W=640,H=250,L=44,R=12,T=16,B=28;
+  const v=D.months.map(m=>-m.hr);const max=900;const ticks=[0,300,600,900];
+  const x=i=>L+(W-L-R)*i/(v.length-1),y=val=>T+(H-T-B)*(1-val/max);
+  ticks.forEach(t=>{el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:'#ECECF4'},svg);el('text',{x:L-8,y:y(t)+4,'text-anchor':'end','font-size':12,fill:'#5D5D85'},svg,t)});
+  let dA=`M${x(0)},${y(0)} `+v.map((val,i)=>`L${x(i)},${y(val)}`).join(' ')+` L${x(v.length-1)},${y(0)}Z`;
+  el('path',{d:dA,fill:'#543FE6',opacity:.1},svg);
+  el('path',{d:'M'+v.map((val,i)=>`${x(i)},${y(val)}`).join(' L'),fill:'none',stroke:'#543FE6','stroke-width':3,'stroke-linejoin':'round'},svg);
+  ['2025','2026','2027'].forEach((yr,k)=>el('text',{x:x(k*12+5.5),y:H-6,'text-anchor':'middle','font-size':12,fill:'#5D5D85','font-weight':600},svg,yr));
+  [12,24].forEach(i=>el('line',{x1:(x(i)+x(i-1))/2,x2:(x(i)+x(i-1))/2,y1:T,y2:H-B,stroke:'#D4D4E8','stroke-dasharray':'3 4'},svg));
+  const pk=v.indexOf(Math.max(...v));
+  [[pk,'пик '+Math.round(v[pk])],[v.length-1,Math.round(v[v.length-1])]].forEach(([i,t])=>{el('circle',{cx:x(i),cy:y(v[i]),r:5,fill:'#fff',stroke:'#543FE6','stroke-width':3},svg);el('text',{x:x(i)-(i===v.length-1?4:0),y:y(v[i])-12,'text-anchor':i===v.length-1?'end':'middle','font-size':12,'font-weight':700,fill:'#131341'},svg,t)});
+  const dot=el('circle',{r:5,fill:'#FFDD7E',stroke:'#131341','stroke-width':2,opacity:0},svg);
+  const hit=el('rect',{x:L,y:T,width:W-L-R,height:H-T-B,fill:'transparent'},svg);
+  hit.addEventListener('mousemove',ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*W/r.width;const i=Math.max(0,Math.min(v.length-1,Math.round((px-L)/(W-L-R)*(v.length-1))));dot.setAttribute('cx',x(i));dot.setAttribute('cy',y(v[i]));dot.setAttribute('opacity',1);showTip(ev,`<b>${mLabel(D.months[i].d)}</b><br>Персонал: ${fmtK(v[i])}`)});
+  hit.addEventListener('mouseleave',()=>{dot.setAttribute('opacity',0);hideTip()});
+})();
+
+/* ---------- headcount bars ---------- */
+function growHC(){document.querySelectorAll('#hc .b').forEach(b=>b.style.height=b.dataset.h+'%')}
+document.querySelectorAll('#hc .b').forEach(b=>b.style.height='0%');
+
+/* ---------- fin monthly ---------- */
+let finMode='net';
+const FIN={net:{t:'Чистая прибыль / убыток по месяцам, € тыс.',k:'net'},op:{t:'Операционная прибыль / убыток по месяцам, € тыс.',k:'op'},rev:{t:'Выручка и валовая прибыль по месяцам, € тыс.',k:'tr'}};
+document.querySelectorAll('#finMode button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#finMode button').forEach(x=>x.classList.remove('on'));b.classList.add('on');finMode=b.dataset.m;drawFin()});
+function drawFin(){
+  document.getElementById('finTitle').textContent=FIN[finMode].t;
+  const svg=document.getElementById('finChart');svg.innerHTML='';
+  const W=760,H=300,L=50,R=8,T=26,B=30;const M=D.months;const n=M.length;
+  const series=finMode==='rev'?M.map(m=>m.tr):M.map(m=>m[finMode]);
+  const lo=Math.min(0,...series),hi=Math.max(0,...series);
+  const ticks=niceTicks(lo,hi,5);const a=ticks[0],b=ticks[ticks.length-1];
+  const y=v=>T+(H-T-B)*(b-v)/(b-a);const bw=(W-L-R)/n;
+  // zones
+  const fx=i=>L+bw*i;
+  el('rect',{x:fx(22),y:T-18,width:bw*14,height:H-B-T+18,fill:'#F4F3FE'},svg);
+  el('text',{x:fx(22)+6,y:T-6,'font-size':11,'font-weight':600,fill:'#543FE6'},svg,'прогноз XI.26–XII.27');
+  ticks.forEach(t=>{el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:t===0?'#9C9CC0':'#ECECF4'},svg);el('text',{x:L-8,y:y(t)+4,'text-anchor':'end','font-size':11,fill:'#5D5D85'},svg,Math.round(t).toLocaleString('ru-RU'))});
+  M.forEach((m,i)=>{
+    const g=el('g',{},svg);
+    if(finMode==='rev'){
+      el('rect',{x:fx(i)+bw*.12,y:y(m.tr),width:bw*.76,height:y(0)-y(m.tr),fill:'#D9D6FB',rx:2},g);
+      el('rect',{x:fx(i)+bw*.12,y:y(Math.max(m.gp,0)),width:bw*.76,height:Math.abs(y(0)-y(m.gp)),fill:'#543FE6',rx:2},g);
+    }else{
+      const v=series[i];el('rect',{x:fx(i)+bw*.14,y:v>=0?y(v):y(0),width:bw*.72,height:Math.max(1,Math.abs(y(v)-y(0))),fill:v>=0?'#00B679':(i>=22?'#8385F2':'#B3B3EB'),rx:2},g);
+    }
+    if(m.d.endsWith('-01'))el('text',{x:fx(i)+2,y:H-8,'font-size':12,'font-weight':600,fill:'#5D5D85'},svg,m.d.slice(0,4));
+    const hit=el('rect',{x:fx(i),y:T,width:bw,height:H-T-B,fill:'transparent'},svg);
+    hit.addEventListener('mousemove',ev=>{let h=`<b>${mLabel(m.d)}</b>`;
+      if(finMode==='rev')h+=`<div class="row"><span>Выручка</span><span>${fmtK(m.tr)}</span></div><div class="row"><span>Валовая прибыль</span><span>${fmtK(m.gp)}</span></div>`;
+      else h+=`<div class="row"><span>${finMode==='net'?'Чистый результат':'Операционный результат'}</span><b>${fmtK(series[i])}</b></div><div class="row"><span>Валовая прибыль</span><span>${fmtK(m.gp)}</span></div><div class="row"><span>OPEX</span><span>${fmtK(m.sm+m.hr+m.it)}</span></div>`;
+      showTip(ev,h)});
+    hit.addEventListener('mouseleave',hideTip);
+  });
+  if(finMode!=='rev'){
+    const i=M.findIndex((m,k)=>k>24&&m[finMode]>0);
+    if(i>0){const xx=fx(i)+bw/2;el('line',{x1:xx,x2:xx,y1:y(0)-4,y2:y(b)+18,stroke:'#00B679','stroke-width':2,'stroke-dasharray':'4 4'},svg);
+      el('text',{x:xx-6,y:y(b)+30,'text-anchor':'end','font-size':12,'font-weight':700,fill:'#007A52'},svg,(finMode==='net'?'Чистая прибыль с ':'Опер. прибыль с ')+mLabel(M[i].d))}
+  }
+  if(finMode==='rev'){
+    [['#D9D6FB','Выручка'],['#543FE6','Валовая прибыль']].forEach(([c,t],k)=>{el('rect',{x:W-R-250+k*120,y:T+8,width:12,height:12,rx:3,fill:c},svg);el('text',{x:W-R-232+k*120,y:T+18,'font-size':12,fill:'#131341'},svg,t)})
+  }
+}
+drawFin();
+
+/* ---------- P&L table ---------- */
+(function(){
+  const rows=[['Выручка','rev_t'],['Валовая прибыль','gp'],['Маркетинг','sm'],['Персонал','hr'],['IT и G&A','it'],['Операционная прибыль','op',1],['Чистая прибыль','net',1]];
+  const t=document.getElementById('plTable');
+  let h='<thead><tr><th></th>'+D.years.map((y,i)=>`<th class="${i===2?'hl':''}">${y.y}</th>`).join('')+'</tr></thead><tbody>';
+  rows.forEach(([n,k,tot])=>{h+=`<tr class="${tot?'tot':''}"><td>${n}</td>`+D.years.map((y,i)=>{const v=y[k]/1000;const cls=(tot?(v<0?'neg':'pos'):'')+(i===2?' hl':'');return `<td class="${cls}">${(v<0?'−':'')+Math.abs(v).toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1})}</td>`}).join('')+'</tr>'});
+  t.innerHTML=h+'</tbody>';
+})();
+
+/* ---------- cumulative ---------- */
+(function(){
+  const svg=document.getElementById('cumChart');const W=560,H=220,L=48,R=12,T=26,B=28;
+  const c=D.cum;const n=c.length;const lo=-700,hi=0;
+  const x=i=>L+(W-L-R)*i/(n-1),y=v=>T+(H-T-B)*(hi-v)/(hi-lo);
+  [0,-200,-400,-600].forEach(t=>{el('line',{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:t===0?'#9C9CC0':'#ECECF4'},svg);el('text',{x:L-8,y:y(t)+4,'text-anchor':'end','font-size':11,fill:'#5D5D85'},svg,t)});
+  el('path',{d:`M${x(0)},${y(0)} `+c.map((v,i)=>`L${x(i)},${y(v.v)}`).join(' ')+` L${x(n-1)},${y(0)}Z`,fill:'#F26D6D',opacity:.12},svg);
+  el('path',{d:'M'+c.map((v,i)=>`${x(i)},${y(v.v)}`).join(' L'),fill:'none',stroke:'#543FE6','stroke-width':3},svg);
+  const pk=c.reduce((a,v,i)=>v.v<c[a].v?i:a,0);
+  el('circle',{cx:x(pk),cy:y(c[pk].v),r:6,fill:'#FFDD7E',stroke:'#131341','stroke-width':2},svg);
+  el('text',{x:x(pk),y:y(c[pk].v)+22,'text-anchor':'middle','font-size':12,'font-weight':700,fill:'#131341'},svg,'пик '+fmtK(c[pk].v)+' · '+mLabel(c[pk].d));
+  el('text',{x:L,y:T-10,'font-size':11,'font-weight':600,fill:'#5D5D85'},svg,'Накопленный чистый результат с XI.2026, € тыс.');
+  [0,2,8,n-1].forEach(i=>el('text',{x:x(i),y:H-8,'text-anchor':i===n-1?'end':(i===0?'start':'middle'),'font-size':11,fill:'#5D5D85'},svg,mLabel(c[i].d)));
+  c.forEach((v,i)=>{const hit=el('rect',{x:x(i)-(W-L-R)/(n-1)/2,y:T,width:(W-L-R)/(n-1),height:H-T-B,fill:'transparent'},svg);
+    hit.addEventListener('mousemove',ev=>showTip(ev,`<b>${mLabel(v.d)}</b><br>За месяц: ${fmtK(v.m)}<br>Накоплено: <b>${fmtK(v.v)}</b>`));hit.addEventListener('mouseleave',hideTip)});
+})();
+
+/* ---------- navigation ---------- */
+const slides=[...document.querySelectorAll('.slide')];const bar=document.getElementById('bar');const dots=document.getElementById('dots');
+slides.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Слайд '+(i+1));b.onclick=()=>s.scrollIntoView();dots.appendChild(b)});
+let cur=0;
+function setCur(i){cur=i;[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+  bar.className='bar '+(slides[i].dataset.theme==='violet'?'on-violet':'on-lav')}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');if(e.target.id==='s3')growHC()}}),{threshold:.2});
+slides.forEach(s=>io.observe(s));
+function onScroll(){const mid=innerHeight*0.35;let best=0;slides.forEach((s,i)=>{if(s.getBoundingClientRect().top<=mid)best=i});if(best!==cur)setCur(best)}
+addEventListener('scroll',onScroll,{passive:true});setCur(0);
+const go=d=>{const i=Math.max(0,Math.min(slides.length-1,cur+d));slides[i].scrollIntoView()};
+document.getElementById('prev').onclick=()=>go(-1);document.getElementById('next').onclick=()=>go(1);
+addEventListener('keydown',e=>{if(['ArrowDown','PageDown',' ','ArrowRight'].includes(e.key)){e.preventDefault();go(1)}if(['ArrowUp','PageUp','ArrowLeft'].includes(e.key)){e.preventDefault();go(-1)}});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{drawRev();drawFin()},150)});
+</script>
+</body>
+</html>
